@@ -7,29 +7,29 @@ not in the grammar it rewrites as itself.   The functions generate and
 generate_tree generate a string and tree representation, respectively, of
 a random sentence."""
 
+# Parsing imports
 import random
-from nltk import Nonterminal, nonterminals, Production, CFG
-from nltk.parse import RecursiveDescentParser
+
+from nltktc import Nonterminal, Production, CFG
+from nltktc.parse import RecursiveDescentParser
+
+
+# Utilities
+import sys
+from bioutils import *
+
+# Stringified imports
+imps = "from bioutils import *\n"
 
 def Grammar(**grammar):
   "Create a dictionary mapping symbols to alternatives."
   for (cat, rhs) in grammar.items():
     grammar[cat] = [alt.split() for alt in rhs.split('|')]
   return grammar
-#
-# grammar = Grammar(
-#   S  = 'NP VP | Action Object',
-#   NP = 'Art N',
-#   VP = 'V NP',
-#   Art= 'the | a',
-#   N  = 'man | ball | woman | table',
-#   V  = 'hit | took | saw | liked',
-#   Action = 'convert | translate',
-#   Object = 'sequence | file'
-#   )
+
 
 grammar = CFG.fromstring("""
-  S -> Action UNIVERSAL_TERMINAL 'to' FileType | Action 'meow'
+  S -> Action UNIVERSAL_TERMINAL 'to' FileType
   FileType -> 'fasta' | 'genbank' | 'sbol'
   Action -> 'convert' | 'translate'
   Object -> 'sequence' | 'file'
@@ -42,7 +42,7 @@ S = Nonterminal('S')
 FileType = Nonterminal('FileType')
 
 productions = list()
-productions.append(Production(S, (Action, UNIVERSAL_TERMINAL, 'to', FileType), "print(\"I found\" + $1)"))
+productions.append(Production(S, (Action, UNIVERSAL_TERMINAL, 'to', FileType), imps+"seq_convert($2, $4)"))
 productions.append(Production(Action, ('convert',)))
 productions.append(Production(Action, ('translate',)))
 productions.append(Production(FileType, ('fasta',)))
@@ -68,10 +68,19 @@ def generate_tree(symbol='S'):
     return {symbol: map(generate_tree, random.choice(grammar[symbol]))}
 
 def main():
-  sr = RecursiveDescentParser(grammar2, 1)
-  sentence1 = 'convert myfile.gb to fasta'.split()
-  for t in sr.parse((sentence1)):
-    print t
+  sr = RecursiveDescentParser(grammar2)
+  done = False
+  while not done:
+    sentence1 = raw_input().split()
+    l =  sr.parse((sentence1))
+    try:
+      l.next()
+    except StopIteration:
+      print "tyler pls"
+      continue
+
+
+
 
 if __name__ == "__main__":
   main()
