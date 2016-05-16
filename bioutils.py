@@ -29,16 +29,17 @@ the user specified actions after a complete parsing of a given input is found.
 
 import string, sys
 from Bio import Seq, SeqIO
+from DNASequence import DNASequence
+import simple
 
-def seq_convert(filepath, filetype):
+def open_seq_file(filepath):
     """
-    Convert a biological sequence into the given type.
-    :param filename: fully qualified path of file
-    :param filetype: type to convert to
-    :return: Error status
+    Boilerplate code for opening a sequencing file, handling errors
+    :param filepath: path of file
+    :return: Seq object
     """
 
-
+    f = None # will return
     if not filepath:
         print "Error: No file specified."
         return -1
@@ -49,12 +50,51 @@ def seq_convert(filepath, filetype):
     if extenspart == "gb":
         extenspart = "genbank"
     try:
-        f = SeqIO.parse(filepath, extenspart)
-        fname = namepart+"."+filetype.lower()
-        SeqIO.write(f, fname, filetype.lower())
-        print "Wrote file", fname + "."
-        return 0
+        f = SeqIO.read(filepath, extenspart)
     except IOError:
         print "Error: Cannot open/access", filepath + "."
         return -1
+    finally:
+        return f
+
+def seq_convert(filepath, filetype):
+    """
+    Convert a biological sequence into the given type.
+    :param filename: fully qualified path of file
+    :param filetype: type to convert to
+    :return: Status
+    """
+
+
+    f = open_seq_file(filepath)
+    if (f == -1):
+        return
+    typewr = filetype
+    if (filetype == "genbank"):
+        typewr = "gb"
+    splitstr = string.split(filepath, ".")
+    namepart = string.join(splitstr[:-1])
+    fname = namepart + "." + typewr
+    SeqIO.write(f, fname, filetype.lower())
+    print "Wrote file", fname + "."
+    return fname
+
+
+def get_seq_property(property, filepath):
+    """
+    Find, or possibly compute, a given property of a sequence.
+
+    :param property: the desired property
+    :param filepath: fully qualified path of sequence file
+    :return: Status
+    """
+
+    d = DNASequence(filepath)
+    err_flag = 0
+    m = d.get_property(property, err_flag)
+    if not err_flag:
+        print "The", property, "of", filepath, "is", str(m)
+
+
+    return d
 
