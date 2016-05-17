@@ -29,7 +29,7 @@ the user specified actions after a complete parsing of a given input is found.
 
 import string, sys
 from Bio import Seq, SeqIO
-from DNASequence import DNASequence
+from DNASequence import DNASequence, ExpressionCassette
 import simple
 
 def open_seq_file(filepath):
@@ -98,3 +98,13 @@ def get_seq_property(property, filepath):
 
     return d
 
+def get_coding_seq_property(property, filepath):
+
+    d = ExpressionCassette(filepath)
+    err_flag = 0
+    m = d.get_property(property, err_flag)
+    if not err_flag:
+        print "The", property, "of", filepath, "is", str(m)
+
+
+    return d

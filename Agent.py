@@ -1,6 +1,7 @@
 from nltktc import RecursiveDescentParser
 class Agent():
 
+    # Store the result of the most recent computation
     global that
 
     def __init__(self, g, p):
@@ -8,6 +9,8 @@ class Agent():
         self._parser = p
         self._results = list()
         self._that = None
+
+
 
     def that(self):
         return self._that

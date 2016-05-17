@@ -63,5 +63,57 @@ class DNASequence():
             flag = 1
             return
 
+class ExpressionCassette(DNASequence):
+
+    def __init__(self, fpath):
+        self._promoter = None
+        self._rbs = None
+        self._file = fpath
+
+    def promoter(self):
+        if not self._promoter:
+            self._promoter = self.get_feature("promoter")
+        return self._promoter
+
+    def rbs(self):
+        if not self._rbs:
+            self._rbs = self.get_feature("rbs")
+        return self._rbs
+
+    def get_feature(self, s):
+        """
+        Find the promoter in a given expression cassette.
+        :return: the name of the promoter
+        """
+
+        f = bioutils.open_seq_file(self._file)
+        if (f == -1):
+            return -1
+
+        if not f.features:
+            print "Sorry, the sequence", self._fpath, "has no promoter."
+            return
+
+        for feat in f.features:
+            if (feat.type.lower() == s.lower()):
+                return feat
+
+        return
+
+    def get_property(self, property, flag):
+        """
+        Get a specified property
+        :param property: desired property
+        :return: the actual property value
+        """
+        try:
+            p = getattr(ExpressionCassette, str(property))
+            return p(self)
+        except NameError:
+            print "Sorry,", property, "is not a property of", self.__class__ + \
+                "."
+            flag = 1
+            return
+
 
 
