@@ -37,6 +37,8 @@ productions.append(Production(SequenceProperty, ('translation',)))
 productions.append(Production(SequenceProperty, ('transcription',)))
 productions.append(Production(CodingSequenceProperty, ('promoter',)))
 productions.append(Production(CodingSequenceProperty, ('rbs',)))
+productions.append(Production(CodingSequenceProperty, ('coding','sequence',)))
+
 productions.append(Production(SequenceProperty, ('length',)))
 
 productions.append(Production(FileType, ('fasta',)))

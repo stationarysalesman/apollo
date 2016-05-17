@@ -3,9 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="1f836f3b-b23b-4d52-bbf4-4d7534a7d9c4" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Agent.py" afterPath="$PROJECT_DIR$/Agent.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DNASequence.py" afterPath="$PROJECT_DIR$/DNASequence.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bioutils.py" afterPath="$PROJECT_DIR$/bioutils.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/simple.py" afterPath="$PROJECT_DIR$/simple.py" />
     </list>
     <ignored path="apollo.iws" />
@@ -30,8 +28,8 @@
       <file leaf-file-name="simple.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/simple.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.63793105">
-              <caret line="37" column="69" selection-start-line="37" selection-start-column="69" selection-end-line="37" selection-end-column="69" />
+            <state vertical-scroll-proportion="0.82758623">
+              <caret line="56" column="0" selection-start-line="56" selection-start-column="0" selection-end-line="56" selection-end-column="0" />
               <folding>
                 <element signature="e#19#32#0" expanded="true" />
               </folding>
@@ -53,8 +51,10 @@
         <entry file="file://$PROJECT_DIR$/DNASequence.py">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="81" column="0" selection-start-line="81" selection-start-column="0" selection-end-line="81" selection-end-column="0" />
-              <folding />
+              <caret line="88" column="0" selection-start-line="88" selection-start-column="0" selection-end-line="88" selection-end-column="0" />
+              <folding>
+                <element signature="e#0#15#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -100,8 +100,8 @@
         <option value="$PROJECT_DIR$/utils/biology/bioutils.py" />
         <option value="$PROJECT_DIR$/Agent.py" />
         <option value="$PROJECT_DIR$/bioutils.py" />
-        <option value="$PROJECT_DIR$/simple.py" />
         <option value="$PROJECT_DIR$/DNASequence.py" />
+        <option value="$PROJECT_DIR$/simple.py" />
       </list>
     </option>
   </component>
@@ -369,7 +369,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="e#0#15#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -476,15 +478,17 @@
     <entry file="file://$PROJECT_DIR$/DNASequence.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="81" column="0" selection-start-line="81" selection-start-column="0" selection-end-line="81" selection-end-column="0" />
-          <folding />
+          <caret line="88" column="0" selection-start-line="88" selection-start-column="0" selection-end-line="88" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#15#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/simple.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.63793105">
-          <caret line="37" column="69" selection-start-line="37" selection-start-column="69" selection-end-line="37" selection-end-column="69" />
+        <state vertical-scroll-proportion="0.82758623">
+          <caret line="56" column="0" selection-start-line="56" selection-start-column="0" selection-end-line="56" selection-end-column="0" />
           <folding>
             <element signature="e#19#32#0" expanded="true" />
           </folding>

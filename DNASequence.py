@@ -1,4 +1,5 @@
 import bioutils
+import string
 
 class DNASequence():
 
@@ -69,6 +70,7 @@ class ExpressionCassette(DNASequence):
         self._promoter = None
         self._rbs = None
         self._file = fpath
+        self._codingsequence = None
 
     def promoter(self):
         if not self._promoter:
@@ -79,6 +81,11 @@ class ExpressionCassette(DNASequence):
         if not self._rbs:
             self._rbs = self.get_feature("rbs")
         return self._rbs
+
+    def codingsequence(self):
+        if not self._codingsequence:
+            self._codingsequence = self.get_feature("cds")
+        return self._codingsequence
 
     def get_feature(self, s):
         """
@@ -106,6 +113,9 @@ class ExpressionCassette(DNASequence):
         :param property: desired property
         :return: the actual property value
         """
+
+        string.replace(property, ' ', '')
+
         try:
             p = getattr(ExpressionCassette, str(property))
             return p(self)
